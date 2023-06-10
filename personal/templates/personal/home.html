@@ -1,6 +1,174 @@
-{% extends 'base.html' %}
 
-{% block content %}
-<!-- Additional content specific to the home page -->
-<P>Hello welcome to the home page</P>
-{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAcaX</title>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+    .homescreen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      width:100%;
+      margin: 0 auto;
+      flex-direction: column;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .mainblur{
+        background-image: url('libraries_can_improve.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        backdrop-filter: blur(8px);
+    }
+
+    .footer {
+        padding: 20px 0;
+        text-align: center;
+        font-size: 14px;
+        color: #777;
+      }
+    .bg-blue{
+        background-color: #15293e;
+    }
+    .bigfont{
+        font-size: 5rem;
+    }
+    </style>
+</head>
+
+<body class="mainblur">
+
+
+    <!----------------------------------- modal target for LOGIN  ----------------------------->
+
+    <div class="modal modal-signin  py-5" tabindex="-1" role="dialog" id="modalLoginin">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-4 shadow">
+            <div class="modal-header p-5 pb-4-bottom-0">
+              <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
+              <h1 class="fw-bold mb-0 fs-2">SignUp</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-5 pt-0" id="modal-body">
+              <form class="" id="signup-form">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                  <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Next</button>
+                <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+                <hr class="my-4">
+                <h2 class="fs-5 fw-bold mb-3">Or use a third-party</h2>
+                <button class="w-100 py-2 mb-2 btn btn-outline-dark rounded-3" type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                  </svg>
+                  Sign up with Twitter
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                  </svg>
+                  Sign up with Facebook
+                </button>
+                <button class="w-100 py-2 mb-2 btn btn-outline-danger rounded-3" type="submit">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mailbox" viewBox="0 0 16 16">
+                    <path d="M4 4a3 3 0 0 0-3 3v6h6V7a3 3 0 0 0-3-3zm0-1h8a4 4 0 0 1 4 4v6a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V7a4 4 0 0 1 4-4zm2.646 1A3.99 3.99 0 0 1 8 7v6h7V7a3 3 0 0 0-3-3H6.646z"/>
+                    <path d="M11.793 8.5H9v-1h5a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.354-.146l-.853-.854zM5 7c0 .552-.448 0-1 0s-1 .552-1 0a1 1 0 0 1 2 0z"/>
+                  </svg>
+                  Sign up with Gmail
+                </button>
+                <p> Already a member? <a href="./signup.html">Login</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!----------------------------------- END modal target for LOGIN   ---------------------------------->
+
+
+
+    <main class="">
+        <div class="homescreen imgmain w-100">
+            <h1 class="text-white bigfont">Welcome to EAcaX</h1>
+            <p class="text-white">Learn anytime, anywhere with our easily accessible online course materials.</p>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalLoginin">Get started</button>
+        </div>
+    </main>
+
+    <footer class="d-none bg-blue">
+        <div class="bg-blue footer text-center">
+          <p>e[learning@2023] © All rights reserved.</p>
+          <!-- <p>&copy;</p> -->
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
+      const signupForm = document.getElementById('signup-form');
+      const modalBody = document.getElementById('modal-body');
+
+      signupForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Code to process form submission goes here
+        // ...
+        // Replace the contents of the modal body with the new screen
+        modalBody.innerHTML = `
+        <div class="new-screen">
+        <!-- Your HTML code for the new screen goes here -->
+        <form action="" id="newscreencontent">
+        <div class="form-group form-floating mb-3">
+          <select class="form-control" id="role">
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+          <label for="role">I am a:</label>
+        </div>
+        <div class="form-group form-floating mb-3">
+          <select class="form-control" id="education">
+            <option value="grade1-6">Grades 1-6</option>
+            <option value="grade7-9">Grades 7-9</option>
+            <option value="grade10-12">Grades 10-12</option>
+            <option value="college">College</option>
+            <option value="other">Other</option>
+          </select>
+          <label for="education">My education level is:</label>
+        </div>
+        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+        <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+      </form>
+        </div>
+
+        `;
+        // newscreencontent.addEventListener('submit', function(event) {
+        // event.preventDefault();
+        // modalBody.innerHTML =
+        // '<h2>Thank you for signing up!</h2><p>Your account has been created.</p>';
+      });
+    </script>
+
+</body>
+</html>
+
