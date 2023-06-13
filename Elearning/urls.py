@@ -22,6 +22,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('personal.urls')),
+    # path('account/', include('accounts.urls')),
 ]
 
 # Serve static files during development

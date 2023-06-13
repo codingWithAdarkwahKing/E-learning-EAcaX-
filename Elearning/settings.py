@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     # my app
     'personal',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +68,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = "accounts.Account"
 
 WSGI_APPLICATION = 'Elearning.wsgi.application'
 
